@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <nav-header></nav-header>
-        <card-front></card-front>
+        <nav-header @pageWasChanged="currentPage = $event"></nav-header>
+        <component :is="currentPage"></component>
       </div>
     </div>
   </div>
@@ -14,6 +14,11 @@
   import CardFront from './components/card/CardFront.vue'
 
   export default {
+    data: function() {
+      return {
+        currentPage: 'cardFront'
+      }
+    },
     components: {
       navHeader: Header,
       cardFront: CardFront
